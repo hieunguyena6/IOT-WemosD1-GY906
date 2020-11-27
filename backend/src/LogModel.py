@@ -21,8 +21,8 @@ class LogModel(db.Model):
         """
         self.temperature_ob = temperature_ob
         self.temperature_ab = temperature_ab
-        self.created_at = datetime.datetime.utcnow()
-        self.modified_at = datetime.datetime.utcnow()
+        self.created_at = datetime.datetime.now()
+        self.modified_at = datetime.datetime.now()
 
     def save(self):
         db.session.add(self)

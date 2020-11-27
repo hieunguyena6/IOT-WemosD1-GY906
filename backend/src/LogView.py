@@ -1,19 +1,21 @@
 from flask import request, g, Blueprint, json, Response
 from .LogModel import LogModel, LogSchema
+from flask_cors import CORS, cross_origin
 
 log_api = Blueprint("log_api", __name__)
+# CORS(log_api)
 log_schema = LogSchema()
 
 
 @log_api.route("/", methods=["GET"])
 def index():
-    print(request)
     limit = request.args.get("limit")
     if limit:
         logs = LogModel.get_logs(limit)
     else:
         logs = LogModel.get_all_logs()
     ser_logs = log_schema.dump(logs, many=True)
+    ser_logs.reverse()
     return custom_response(ser_logs, 200)
 
 

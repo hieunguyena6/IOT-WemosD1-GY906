@@ -8,7 +8,6 @@ verify_ssl = true
 [packages]
 flask = "*"
 flask-sqlalchemy = "*"
-psycopg2 = "*"
 flask-migrate = "*"
 flask-script = "*"
 marshmallow = "*"
@@ -17,6 +16,7 @@ python-dotenv = "*"
 manage = "*"
 #functools = "*"
 #dotenv = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.8"
