@@ -1,10 +1,12 @@
 from marshmallow import fields, Schema
 import datetime
 from flask_sqlalchemy import SQLAlchemy
+
 db = SQLAlchemy()
 
+
 class LogModel(db.Model):
-    __tablename__ = 'logs'
+    __tablename__ = "logs"
 
     id = db.Column(db.Integer, primary_key=True)
     temperature_ob = db.Column(db.Float)
@@ -29,6 +31,11 @@ class LogModel(db.Model):
     @staticmethod
     def get_all_logs():
         return LogModel.query.all()
+
+    @staticmethod
+    def get_logs(num):
+        return LogModel.query.order_by(LogModel.id.desc()).limit(num)
+
 
 class LogSchema(Schema):
     id = fields.Int(dump_only=True)
