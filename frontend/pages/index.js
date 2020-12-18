@@ -8,6 +8,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import LineChart from '../components/LineChart'
+import Table from '../components/Table'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -15,6 +16,7 @@ const { SubMenu } = Menu;
 class SiderDemo extends Component {
   state = {
     collapsed: false,
+    table: false
   };
 
   onCollapse = collapsed => {
@@ -28,10 +30,10 @@ class SiderDemo extends Component {
         <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
+            <Menu.Item key="1" icon={<PieChartOutlined />} onClick={() => this.setState({ table: false })}>
               Realtime
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
+            <Menu.Item key="2" icon={<DesktopOutlined />} onClick={() => this.setState({ table: true })}>
               Thống kê
             </Menu.Item>
           </Menu>
@@ -43,10 +45,10 @@ class SiderDemo extends Component {
               <Breadcrumb.Item>Realtime</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              <LineChart />
+              {this.state.table ? <Table /> : <LineChart />}
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}></Footer>
         </Layout>
       </Layout>
     );

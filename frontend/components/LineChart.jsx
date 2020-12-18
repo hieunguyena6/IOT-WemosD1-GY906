@@ -17,7 +17,7 @@ class LineChart extends React.Component {
       setInterval(async () => {
         const res = await Axios.get('http://127.0.0.1:5000/logs/?limit=15');
         this.setState({
-          data: res.data
+          data: res.data.rows
         })
       }, 1000);
     } catch (e) {

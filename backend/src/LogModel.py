@@ -30,12 +30,15 @@ class LogModel(db.Model):
 
     @staticmethod
     def get_all_logs():
-        return LogModel.query.all()
+        return LogModel.query.order_by(LogModel.id.asc()).all()
 
     @staticmethod
     def get_logs(num):
         return LogModel.query.order_by(LogModel.id.desc()).limit(num)
 
+    @staticmethod
+    def get_total_log():
+        return LogModel.query.count()
 
 class LogSchema(Schema):
     id = fields.Int(dump_only=True)

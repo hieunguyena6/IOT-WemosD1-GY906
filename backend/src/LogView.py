@@ -16,7 +16,11 @@ def index():
         logs = LogModel.get_all_logs()
     ser_logs = log_schema.dump(logs, many=True)
     ser_logs.reverse()
-    return custom_response(ser_logs, 200)
+    response = {
+      "total": LogModel.get_total_log(),
+      "rows": ser_logs
+    }
+    return custom_response(response, 200)
 
 
 @log_api.route("", methods=["POST"])

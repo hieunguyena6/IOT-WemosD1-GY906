@@ -5,9 +5,9 @@
 #include <ArduinoJson.h>
 
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
-const char* ssid = "Hieu";
-const char* password = "123456789";
-const char* server = "http://192.168.43.139:5000/logs";
+const char* ssid = "ssid";
+const char* password = "password";
+const char* server = "http://192.168.2.105:5000/logs";
 
 void setup() {
   Serial.begin(9600);
